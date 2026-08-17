@@ -6,7 +6,7 @@ plugins {
 }
 
 group = "com.freetime"
-version = "1.0.0"
+version = "1.1.0"
 
 repositories {
     mavenCentral()
@@ -22,8 +22,7 @@ java {
 
 dependencies {
     intellijPlatform {
-        intellijIdeaCommunity("2023.2.5")
-        instrumentationTools()
+        intellijIdea("2026.1.2")
     }
 
     implementation("com.squareup.okhttp3:okhttp:5.3.2")
@@ -44,14 +43,5 @@ intellijPlatform {
             Anthropic (Claude 3), and Google Gemini into your coding workflow.
             Features include code explanation, real-time chat, and multi-provider switching.
         """.trimIndent()
-    }
-}
-
-tasks {
-    withType<org.jetbrains.kotlin.gradle.tasks.KotlinCompile> {
-        kotlinOptions {
-            jvmTarget = "17"
-            freeCompilerArgs = listOf("-Xjvm-default=all")
-        }
     }
 }
