@@ -1,8 +1,8 @@
 plugins {
     id("java")
-    id("org.jetbrains.kotlin.jvm") version "2.3.21"
-    id("org.jetbrains.intellij.platform") version "2.16.0"
-    id("org.jetbrains.kotlin.plugin.serialization") version "2.3.21"
+    id("org.jetbrains.kotlin.jvm") version "2.4.10"
+    id("org.jetbrains.intellij.platform") version "2.18.1"
+    id("org.jetbrains.kotlin.plugin.serialization") version "2.4.10"
 }
 
 group = "com.freetime"
@@ -22,10 +22,10 @@ java {
 
 dependencies {
     intellijPlatform {
-        intellijIdea("2026.1.2")
+        intellijIdea("2026.2")
     }
 
-    implementation("com.squareup.okhttp3:okhttp:5.3.2")
+    implementation("com.squareup.okhttp3:okhttp:5.5.0")
     implementation("com.google.code.gson:gson:2.14.0")
     implementation("org.json:json:20231013")
 }
