@@ -16,7 +16,7 @@
   <depends>com.intellij.modules.platform</depends>
 
   <extensions defaultExtensionNs="com.intellij">
-    <toolWindow factoryClass="com.freetime.maic.toolWindow.MyToolWindowFactory" id="MultiAIChatWindow" name="Multi AI Chat" anchor="right" icon="AllIcons.Actions.Refresh"/>
+    <toolWindow factoryClass="com.freetime.maic.toolWindow.MyToolWindowFactory" id="MultiAIChatWindow" name="Multi AI Chat" anchor="right" icon="/icons/maic_icon.svg"/>
     <notificationGroup id="Multi AI Notifications" displayType="BALLOON"/>
     <applicationConfigurable instance="com.freetime.maic.settings.AppSettingsConfigurable" id="com.freetime.maic.settings.AppSettingsConfigurable" displayName="Multi AI Chat"/>
     <applicationService serviceImplementation="com.freetime.maic.settings.AppSettingsState"/>

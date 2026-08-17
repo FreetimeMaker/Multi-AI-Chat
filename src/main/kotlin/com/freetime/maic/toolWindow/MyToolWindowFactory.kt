@@ -30,17 +30,44 @@ class MyToolWindowFactory : ToolWindowFactory {
         private val inputField = JTextField()
         private val sendButton = JButton("Send")
         private val providerBox = ComboBox(arrayOf("OpenAI", "Gemini", "Anthropic"))
+        private val modelBox = ComboBox<String>()
         private val clearButton = JButton("Clear")
         private val chatService = project.service<ChatService>()
         private val scope = CoroutineScope(Dispatchers.Main + SupervisorJob())
 
+        private val providerModels = mapOf(
+            "OpenAI" to arrayOf("gpt-4o", "gpt-4o-mini", "gpt-4-turbo", "gpt-3.5-turbo"),
+            "Gemini" to arrayOf("gemini-1.5-flash", "gemini-1.5-pro"),
+            "Anthropic" to arrayOf("claude-3-5-sonnet-20240620", "claude-3-opus-20240229", "claude-3-haiku-20240307")
+        )
+
         init {
             val topPanel = JPanel(BorderLayout())
+            val comboPanel = JPanel(BorderLayout())
+            
             providerBox.selectedItem = AppSettingsState.instance.selectedProvider
+            updateModelBox(AppSettingsState.instance.selectedProvider)
+            
             providerBox.addActionListener { 
-                AppSettingsState.instance.selectedProvider = providerBox.selectedItem as String 
+                val provider = providerBox.selectedItem as String
+                AppSettingsState.instance.selectedProvider = provider
+                updateModelBox(provider)
             }
-            topPanel.add(providerBox, BorderLayout.CENTER)
+
+            modelBox.addActionListener {
+                val model = modelBox.selectedItem as? String ?: return@addActionListener
+                val settings = AppSettingsState.instance
+                when (settings.selectedProvider) {
+                    "OpenAI" -> settings.openAiModel = model
+                    "Gemini" -> settings.geminiModel = model
+                    "Anthropic" -> settings.anthropicModel = model
+                }
+            }
+
+            comboPanel.add(providerBox, BorderLayout.WEST)
+            comboPanel.add(modelBox, BorderLayout.CENTER)
+            
+            topPanel.add(comboPanel, BorderLayout.CENTER)
             topPanel.add(clearButton, BorderLayout.EAST)
             
             chatArea.isEditable = false
@@ -69,6 +96,20 @@ class MyToolWindowFactory : ToolWindowFactory {
                     chatArea.caretPosition = chatArea.document.length
                 }
             }
+        }
+
+        private fun updateModelBox(provider: String) {
+            modelBox.removeAllItems()
+            providerModels[provider]?.forEach { modelBox.addItem(it) }
+            
+            val settings = AppSettingsState.instance
+            val selectedModel = when (provider) {
+                "OpenAI" -> settings.openAiModel
+                "Gemini" -> settings.geminiModel
+                "Anthropic" -> settings.anthropicModel
+                else -> ""
+            }
+            modelBox.selectedItem = selectedModel
         }
 
         private fun handleUserInput() {

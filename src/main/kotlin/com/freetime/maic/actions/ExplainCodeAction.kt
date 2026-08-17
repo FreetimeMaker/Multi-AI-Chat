@@ -17,16 +17,25 @@ class ExplainCodeAction : AnAction() {
         val editor = e.getData(CommonDataKeys.EDITOR) ?: return
         val selectedText = editor.selectionModel.selectedText ?: return
         val chatService = project.service<ChatService>()
+        val userName = System.getProperty("user.name") ?: "User"
 
         if (selectedText.isNotBlank()) {
-            val toolWindow = ToolWindowManager.getInstance(project).getToolWindow("MultiAIChatWindow")
+            val toolWindow = ToolWindowManager.getInstance(project).getToolWindow("Multi AI Chat")
             toolWindow?.show()
 
             CoroutineScope(Dispatchers.IO).launch {
+
+                // User message
+                chatService.emitDelta(userName, selectedText, true)
+
+                // System message
                 chatService.emitDelta("System", "Explaining code...", true)
+
                 val prompt = "Please explain this code in detail:\n\n```\n$selectedText\n```"
-                
+
+                // Start AI message
                 chatService.emitDelta("AI", "", true)
+
                 AiClientFactory.getClient().generateResponseStream(prompt).collect { chunk ->
                     chatService.emitDelta("AI", chunk, false)
                 }

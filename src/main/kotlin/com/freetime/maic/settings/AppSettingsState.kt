@@ -16,6 +16,10 @@ class AppSettingsState : PersistentStateComponent<AppSettingsState> {
     var geminiKey: String = ""
     var selectedProvider: String = "OpenAI"
 
+    var openAiModel: String = "gpt-4o"
+    var anthropicModel: String = "claude-3-5-sonnet-20240620"
+    var geminiModel: String = "gemini-1.5-flash"
+
     override fun getState(): AppSettingsState = this
 
     override fun loadState(state: AppSettingsState) {

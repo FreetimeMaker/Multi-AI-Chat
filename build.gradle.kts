@@ -26,8 +26,14 @@ dependencies {
     }
 
     implementation("com.squareup.okhttp3:okhttp:5.5.0")
+    implementation("com.squareup.okio:okio:3.7.0")
     implementation("com.google.code.gson:gson:2.14.0")
     implementation("org.json:json:20231013")
+}
+
+configurations.all {
+    exclude(group = "org.ow2.asm")
+    exclude(group = "org.objectweb.asm")
 }
 
 intellijPlatform {
