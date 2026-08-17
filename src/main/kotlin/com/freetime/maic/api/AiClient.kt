@@ -46,7 +46,7 @@ class OpenAIClient(private val apiKey: String) : AiClient {
             return@flow
         }
 
-        response.body?.source()?.let { source ->
+        response.body.source().let { source ->
             while (!source.exhausted()) {
                 val line = source.readUtf8Line() ?: break
                 if (line.startsWith("data: ")) {
