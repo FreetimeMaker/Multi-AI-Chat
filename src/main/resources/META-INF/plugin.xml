@@ -3,7 +3,7 @@
   <id>com.freetime.maic</id>
   <name>Multi AI Chat</name>
   <vendor>Freetime Maker</vendor>
-  <version>1.1.0</version>
+  <version>1.1.1</version>
   <description><![CDATA[
     Comprehensive Multi AI assistant for JetBrains IDEs.
     This tool integrates major AI providers including OpenAI (GPT-4),
