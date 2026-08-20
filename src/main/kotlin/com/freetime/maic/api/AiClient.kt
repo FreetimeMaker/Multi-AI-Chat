@@ -15,7 +15,7 @@ interface AiClient {
 }
 
 class OpenAIClient(private val apiKey: String, private val model: String) : AiClient {
-    private val client = OkHttpClient.Builder()
+    internal val client = OkHttpClient.Builder()
         .connectTimeout(30, TimeUnit.SECONDS)
         .readTimeout(60, TimeUnit.SECONDS)
         .build()
@@ -58,7 +58,9 @@ class OpenAIClient(private val apiKey: String, private val model: String) : AiCl
                             chunk.choices.firstOrNull()?.delta?.content?.let {
                                 emit(it)
                             }
-                        } catch (e: Exception) {}
+                        } catch (e: Exception) {
+                            // Ignore malformed chunks
+                        }
                     }
                 }
             }
@@ -74,7 +76,7 @@ class OpenAIClient(private val apiKey: String, private val model: String) : AiCl
 }
 
 class AnthropicClient(private val apiKey: String, private val model: String) : AiClient {
-    private val client = OkHttpClient.Builder()
+    internal val client = OkHttpClient.Builder()
         .connectTimeout(30, TimeUnit.SECONDS)
         .readTimeout(60, TimeUnit.SECONDS)
         .build()
@@ -118,7 +120,9 @@ class AnthropicClient(private val apiKey: String, private val model: String) : A
                             if (json.type == "content_block_delta") {
                                 json.delta?.text?.let { emit(it) }
                             }
-                        } catch (e: Exception) {}
+                        } catch (e: Exception) {
+                            // Ignore malformed chunks
+                        }
                     }
                 }
             }
@@ -133,7 +137,7 @@ class AnthropicClient(private val apiKey: String, private val model: String) : A
 }
 
 class GeminiClient(private val apiKey: String, private val model: String) : AiClient {
-    private val client = OkHttpClient.Builder()
+    internal val client = OkHttpClient.Builder()
         .connectTimeout(30, TimeUnit.SECONDS)
         .readTimeout(60, TimeUnit.SECONDS)
         .build()

@@ -11,11 +11,12 @@
     Features include code explanation, real-time chat, and multi-provider switching.
   ]]></description>
 
-  <idea-version since-build="262" />
+  <idea-version since-build="261" />
 
   <depends>com.intellij.modules.platform</depends>
 
   <extensions defaultExtensionNs="com.intellij">
+    <postStartupActivity implementation="com.freetime.maic.activities.UpdateNotificationActivity" />
     <toolWindow factoryClass="com.freetime.maic.toolWindow.MyToolWindowFactory" id="MultiAIChatWindow" name="Multi AI Chat" anchor="right" icon="/icons/maic_icon.svg"/>
     <notificationGroup id="Multi AI Notifications" displayType="BALLOON"/>
     <applicationConfigurable instance="com.freetime.maic.settings.AppSettingsConfigurable" id="com.freetime.maic.settings.AppSettingsConfigurable" displayName="Multi AI Chat"/>

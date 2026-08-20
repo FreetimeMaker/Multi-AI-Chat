@@ -15,6 +15,7 @@ class AppSettingsState : PersistentStateComponent<AppSettingsState> {
     var anthropicKey: String = ""
     var geminiKey: String = ""
     var selectedProvider: String = "OpenAI"
+    var lastVersion: String = ""
 
     var openAiModel: String = "gpt-4o"
     var anthropicModel: String = "claude-3-5-sonnet-20240620"
