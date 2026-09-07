@@ -25,8 +25,8 @@ dependencies {
         intellijIdea("2026.1")
     }
 
-    implementation("com.squareup.okhttp3:okhttp:4.12.0")
-    implementation("com.squareup.okio:okio:3.9.0")
+    implementation("com.squareup.okhttp3:okhttp:5.5.0")
+    implementation("com.squareup.okio:okio:3.7.0")
     implementation("com.google.code.gson:gson:2.14.0")
     implementation("org.json:json:20231013")
 }
@@ -48,16 +48,6 @@ intellijPlatform {
             This tool integrates major AI providers including OpenAI (GPT-4), 
             Anthropic (Claude 3), and Google Gemini into your coding workflow.
             Features include code explanation, real-time chat, and multi-provider switching.
-        """.trimIndent()
-        changeNotes = """
-            <h4>1.1.1</h4>
-            <ul>
-                <li>Added support for Google Gemini 1.5 Pro and Flash.</li>
-                <li>Improved streaming performance for all providers.</li>
-                <li>Fixed OkHttp resolution issues in plugin analysis.</li>
-                <li>Added "What's New" notification on update.</li>
-                <li>Changed Plugin Image/Icon in Sidebar.</li>
-            </ul>
         """.trimIndent()
     }
 }
