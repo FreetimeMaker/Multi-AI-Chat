@@ -30,10 +30,8 @@ class UpdateNotificationActivity : ProjectActivity {
         val content = """
             Multi AI Chat has been updated to $version!<br><br>
             <b>What's New:</b><br>
-            - Support for Google Gemini 1.5 Pro/Flash<br>
-            - Performance improvements<br>
-            - OkHttp resolution fixes<br>
-            - Changed Plugin Image/Icon in Sidebar
+            - Added support for Google Gemini 2.5 Pro and Flash.<br>
+            - Changed the Error instead of 404 to a real message.
         """.trimIndent()
 
         NotificationGroupManager.getInstance()

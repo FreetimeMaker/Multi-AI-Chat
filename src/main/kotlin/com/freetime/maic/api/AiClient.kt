@@ -163,7 +163,10 @@ class GeminiClient(private val apiKey: String, private val model: String) : AiCl
         try {
             val response = client.newCall(request).execute()
             if (!response.isSuccessful) {
-                emit("Error: ${response.code} - ${response.message}")
+                val errorBody = response.body?.string()
+                emit(
+                    "Gemini API Error: ${response.code} - ${response.message}\n$errorBody"
+                )
                 response.close()
                 return@flow
             }
@@ -173,7 +176,7 @@ class GeminiClient(private val apiKey: String, private val model: String) : AiCl
                 // but OkHttp's source.readUtf8Line() might not be ideal if it's one big JSON array.
                 // However, streamGenerateContent often uses a format where each chunk is a JSON object in a list.
                 // A safer way is to read the entire body if it's small, but for streaming we need to parse.
-                
+
                 val content = source.readUtf8()
                 // Simple parsing for Gemini's specific stream format which is a JSON array
                 try {
