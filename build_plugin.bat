@@ -1,0 +1,3 @@
+@echo
+
+./gradlew clean buildPlugin
