@@ -6,7 +6,7 @@ plugins {
 }
 
 group = "com.freetime"
-version = "1.1.2"
+version = "1.1.3"
 
 repositories {
     mavenCentral()
@@ -25,8 +25,8 @@ dependencies {
         intellijIdea("2026.1")
     }
 
-    implementation("com.squareup.okhttp3:okhttp:4.12.0")
-    implementation("com.squareup.okio:okio:3.7.0")
+    implementation("com.squareup.okhttp3:okhttp:5.5.0")
+    implementation("com.squareup.okio:okio:3.18.2")
     implementation("com.google.code.gson:gson:2.14.0")
     implementation("org.json:json:20231013")
 }
@@ -44,10 +44,10 @@ intellijPlatform {
         version = project.version.toString()
 
         changeNotes = """
-            <h3>1.1.2</h3>
+            <h3>1.1.3</h3>
             <ul>
-                <li>Added support for Google Gemini 2.5 Pro and Flash.</li>
-                <li>Changed the Error instead of 404 to a real message.</li>
+                <li>Updated Plugin Icon in Sidebar.</li>
+                <li>Updated some Dependencies.</li>
             </ul>
         """.trimIndent()
 

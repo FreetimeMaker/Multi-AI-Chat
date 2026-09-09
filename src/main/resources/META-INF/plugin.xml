@@ -3,7 +3,7 @@
   <id>com.freetime.maic</id>
   <name>Multi AI Chat</name>
   <vendor>Freetime Maker</vendor>
-  <version>1.1.2</version>
+  <version>1.1.3</version>
   <description><![CDATA[
     Comprehensive Multi AI assistant for JetBrains IDEs.
     This tool integrates major AI providers including OpenAI (GPT-4),
@@ -17,7 +17,7 @@
 
   <extensions defaultExtensionNs="com.intellij">
     <postStartupActivity implementation="com.freetime.maic.activities.UpdateNotificationActivity" />
-    <toolWindow factoryClass="com.freetime.maic.toolWindow.MyToolWindowFactory" id="MultiAIChatWindow" name="Multi AI Chat" anchor="right" icon="/icons/maic_icon.svg"/>
+    <toolWindow factoryClass="com.freetime.maic.toolWindow.MyToolWindowFactory" id="Multi AI Chat" name="Multi AI Chat" anchor="right" icon="/icons/maic_icon.svg"/>
     <notificationGroup id="Multi AI Notifications" displayType="BALLOON"/>
     <applicationConfigurable instance="com.freetime.maic.settings.AppSettingsConfigurable" id="com.freetime.maic.settings.AppSettingsConfigurable" displayName="Multi AI Chat"/>
     <applicationService serviceImplementation="com.freetime.maic.settings.AppSettingsState"/>

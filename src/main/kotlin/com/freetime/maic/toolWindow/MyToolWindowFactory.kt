@@ -37,7 +37,7 @@ class MyToolWindowFactory : ToolWindowFactory {
 
         private val providerModels = mapOf(
             "OpenAI" to arrayOf("gpt-4o", "gpt-4o-mini", "gpt-4-turbo", "gpt-3.5-turbo"),
-            "Gemini" to arrayOf("gemini-1.5-flash", "gemini-1.5-pro"),
+            "Gemini" to arrayOf("gemini-2.5-flash", "gemini-2.5-pro"),
             "Anthropic" to arrayOf("claude-3-5-sonnet-20240620", "claude-3-opus-20240229", "claude-3-haiku-20240307")
         )
 
