@@ -6,7 +6,7 @@ plugins {
 }
 
 group = "com.freetime"
-version = "1.1.3"
+version = "1.1.4"
 
 repositories {
     mavenCentral()
@@ -44,10 +44,9 @@ intellijPlatform {
         version = project.version.toString()
 
         changeNotes = """
-            <h3>1.1.3</h3>
+            <h3>1.1.4</h3>
             <ul>
-                <li>Updated Plugin Icon in Sidebar.</li>
-                <li>Updated some Dependencies.</li>
+                <li>Fixed Gemini still using 1.5.</li>
             </ul>
         """.trimIndent()
 

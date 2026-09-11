@@ -30,8 +30,7 @@ class UpdateNotificationActivity : ProjectActivity {
         val content = """
             Multi AI Chat has been updated to $version!<br><br>
             <b>What's New:</b><br>
-            - Updated Plugin Icon in Sidebar.<br>
-            - Updated some Dependencies.
+            - Fixed Gemini still using 1.5.
         """.trimIndent()
 
         NotificationGroupManager.getInstance()
