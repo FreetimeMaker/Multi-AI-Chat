@@ -19,7 +19,7 @@ class AppSettingsState : PersistentStateComponent<AppSettingsState> {
 
     var openAiModel: String = "gpt-4o"
     var anthropicModel: String = "claude-3-5-sonnet-20240620"
-    var geminiModel: String = "gemini-2.5-flash"
+    var geminiModel: String = "gemini-3.6-flash"
 
     override fun getState(): AppSettingsState = this
 
@@ -29,6 +29,9 @@ class AppSettingsState : PersistentStateComponent<AppSettingsState> {
         // Migrate deprecated Gemini 1.5 models saved by older plugin versions.
         if (geminiModel.startsWith("gemini-1.5")) {
             geminiModel = "gemini-2.5-flash"
+        }
+        if (geminiModel.startsWith("gemini-2.5")) {
+            geminiModel = "gemini-3.6-flash"
         }
     }
 
