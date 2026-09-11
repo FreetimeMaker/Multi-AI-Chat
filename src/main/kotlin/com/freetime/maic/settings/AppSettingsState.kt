@@ -25,6 +25,11 @@ class AppSettingsState : PersistentStateComponent<AppSettingsState> {
 
     override fun loadState(state: AppSettingsState) {
         XmlSerializerUtil.copyBean(state, this)
+
+        // Migrate deprecated Gemini 1.5 models saved by older plugin versions.
+        if (geminiModel.startsWith("gemini-1.5")) {
+            geminiModel = "gemini-2.5-flash"
+        }
     }
 
     companion object {
